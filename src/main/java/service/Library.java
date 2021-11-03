@@ -73,7 +73,7 @@ public class Library implements LibraryService {
     }
 
     @Override
-    public void borrowBookOnPriority() {
+    public void borrowBookOnPriority() throws Exception {
         if(!priorityQueue.isEmpty()){
             final  Person bookBorrower = priorityQueue.remove();
             if((libraryBooks.get(bookBorrower.getBook()) == 0)){
@@ -84,14 +84,15 @@ public class Library implements LibraryService {
                 System.out.println(bookBorrower.getName() +  " You have Successfully borrowed " + bookBorrower.getBook() +" Book");
             }
         } else{
-            System.out.println("Nobody is in the Queue. Go and rest :)");
+            throw new Exception("Nobody is in the Queue. Go and rest :)");
+//            System.out.println();
         }
 
 
     }
 
     @Override
-    public void borrowBookOnFIFO() {
+    public void borrowBookOnFIFO() throws Exception {
         if(!personQueue.isEmpty()) {
             final  Person bookBorrower = personQueue.remove();
             if ((libraryBooks.get(bookBorrower.getBook()) == 0)) {
@@ -102,7 +103,8 @@ public class Library implements LibraryService {
                 System.out.println(bookBorrower.getName() + " You have Successfully borrowed " + bookBorrower.getBook() +" Book");
             }
         }else {
-            System.out.println("Nobody is in the Queue. Go and rest :)");
+            throw new Exception("Nobody is in the Queue. Go and rest :)");
+
         }
 
     }

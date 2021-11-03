@@ -5,7 +5,7 @@ import model.Person;
 
 public class app {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Library librarian = new Library();
 
         //Stacking of book
@@ -60,17 +60,20 @@ public class app {
 
         // Assign Book on priority
 
-        for(int i =0; i< librarian.getCount(); i++){
-            librarian.borrowBookOnPriority();
-        }
-
+//        for(int i =0; i< librarian.getCount(); i++){
+//            librarian.borrowBookOnPriority();
+//        }
+//        librarian.borrowBookOnPriority();
+//        librarian.borrowBookOnPriority();
 
 
         // Assign Book on FIFO
 
-//        for(int i =0; i< librarian.getCount(); i++){
-//            librarian.borrowBookOnFIFO();
-//        }
+        for(int i =0; i< librarian.getCount(); i++){
+            librarian.borrowBookOnFIFO();
+        }
+        librarian.borrowBookOnFIFO();
+        librarian.borrowBookOnFIFO();
 
 
 

@@ -7,8 +7,8 @@ public interface LibraryService {
 
     void queueUp(Person person);
     void stackBook(Book book);
-    void borrowBookOnPriority();
-    void borrowBookOnFIFO();
+    void borrowBookOnPriority() throws Exception;
+    void borrowBookOnFIFO() throws Exception;
 
 
 
