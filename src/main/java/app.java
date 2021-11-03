@@ -29,10 +29,10 @@ public class app {
         // Object of Person Class
 
         Person teacher = new Person("Adamu", PersonType.TEACHER, mathematics.getTitle());
-        Person jStudent = new Person("Luke", PersonType.JUNIOR_STUDENT, mathematics1.getTitle());
-        Person sStudent1 = new Person("Funmi", PersonType.SENIOR_STUDENT, english.getTitle());
-        Person sStudent2 = new Person("Leon", PersonType.SENIOR_STUDENT, english.getTitle());
-        Person jStudent2 = new Person("Jeon", PersonType.JUNIOR_STUDENT, chemistry.getTitle());
+        Person juniorStudent = new Person("Luke", PersonType.JUNIOR_STUDENT, mathematics1.getTitle());
+        Person seniorStudent1 = new Person("Funmi", PersonType.SENIOR_STUDENT, english.getTitle());
+        Person seniorStudent2 = new Person("Leon", PersonType.SENIOR_STUDENT, english.getTitle());
+        Person juniorStudent2 = new Person("Jeon", PersonType.JUNIOR_STUDENT, chemistry.getTitle());
         Person teacher1 = new Person("Lizzy", PersonType.TEACHER, chemistry.getTitle());
         Person teacher2 = new Person("Modd", PersonType.TEACHER, biology.getTitle());
         Person teacher3 = new Person("Modd", PersonType.TEACHER, biology.getTitle());
@@ -41,10 +41,10 @@ public class app {
 
         // Queue them up
         librarian.queueUp(teacher);
-        librarian.queueUp(jStudent);
-        librarian.queueUp(sStudent1);
-        librarian.queueUp(sStudent2);
-        librarian.queueUp(jStudent2);
+        librarian.queueUp(juniorStudent);
+        librarian.queueUp(seniorStudent1);
+        librarian.queueUp(seniorStudent2);
+        librarian.queueUp(juniorStudent2);
         librarian.queueUp(teacher1);
         librarian.queueUp(teacher2);
         librarian.queueUp(teacher3);
