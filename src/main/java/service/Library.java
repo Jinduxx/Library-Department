@@ -1,6 +1,7 @@
 package service;
 
 
+import enumeration.PersonType;
 import model.Book;
 import model.Person;
 
@@ -77,11 +78,11 @@ public class Library implements LibraryService {
         if(!priorityQueue.isEmpty()){
             final  Person bookBorrower = priorityQueue.remove();
             if((libraryBooks.get(bookBorrower.getBook()) == 0)){
-                System.out.println("Apologies "+ bookBorrower.getName() + ", " + bookBorrower.getBook() + " Book"+ " is already taken");
+                System.out.println("Apologies "+ bookBorrower.getPersonType() + " " +  bookBorrower.getName() + ", " + bookBorrower.getBook() + " Book"+ " is already taken");
             }else {
                 int old = libraryBooks.get(bookBorrower.getBook());
                 libraryBooks.put(bookBorrower.getBook(), old -1);
-                System.out.println(bookBorrower.getName() +  " You have Successfully borrowed " + bookBorrower.getBook() +" Book");
+                System.out.println(bookBorrower.getPersonType() + " " + bookBorrower.getName() +  " You have Successfully borrowed " + bookBorrower.getBook() +" Book");
             }
         } else{
             throw new Exception("Nobody is in the Queue. Go and rest :)");
@@ -96,11 +97,11 @@ public class Library implements LibraryService {
         if(!personQueue.isEmpty()) {
             final  Person bookBorrower = personQueue.remove();
             if ((libraryBooks.get(bookBorrower.getBook()) == 0)) {
-                System.out.println("Apologies "+ bookBorrower.getName() + ", " + bookBorrower.getBook() + " Book"+ " is already taken");
+                System.out.println("Apologies "+ bookBorrower.getPersonType() + " " +  bookBorrower.getName() + ", " + bookBorrower.getBook() + " Book"+ " is already taken");
             } else {
                 int old = this.libraryBooks.get(bookBorrower.getBook());
                 libraryBooks.put(bookBorrower.getBook(), old - 1);
-                System.out.println(bookBorrower.getName() + " You have Successfully borrowed " + bookBorrower.getBook() +" Book");
+                System.out.println(bookBorrower.getPersonType() + " " +   bookBorrower.getName() + " You have Successfully borrowed " + bookBorrower.getBook() +" Book");
             }
         }else {
             throw new Exception("Nobody is in the Queue. Go and rest :)");

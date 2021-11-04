@@ -69,11 +69,11 @@ public class app {
 
         // Assign Book on FIFO
 
-        for(int i =0; i< librarian.getCount(); i++){
-            librarian.borrowBookOnFIFO();
-        }
-        librarian.borrowBookOnFIFO();
-        librarian.borrowBookOnFIFO();
+//        for(int i =0; i< librarian.getCount(); i++){
+//            librarian.borrowBookOnFIFO();
+//        }
+//        librarian.borrowBookOnFIFO();
+//        librarian.borrowBookOnFIFO();
 
 
 
