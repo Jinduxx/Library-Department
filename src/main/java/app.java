@@ -75,8 +75,8 @@ public class app {
         for(int i =0; i< librarian.getCount(); i++){
             librarian.borrowBookOnFIFO();
         }
-        librarian.borrowBookOnFIFO();
-        librarian.borrowBookOnFIFO();
+//        librarian.borrowBookOnFIFO();
+//        librarian.borrowBookOnFIFO();
 
 
 

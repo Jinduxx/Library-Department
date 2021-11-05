@@ -17,10 +17,10 @@ public class ServiceBookLibrary {
     }
 
 
-    @Test
-    public void libraryIsEmpty(){
-        assertNotNull(lib.getLibraryBooks());
-    }
+//    @Test
+//    public void libraryIsEmpty(){
+//        assertNotNull(lib.getLibraryBooks());
+//    }
 
 
     @Test
@@ -41,13 +41,9 @@ public class ServiceBookLibrary {
 
     @Test
     public void ifPriorityIsConsidered(){
-        Book mathematics = new Book("Mathematics", 1);
-        Book mathematics1 = new Book("Mathematics", 3);
-        Book english = new Book("English", 4);
-        Person junior = new Person("Finger", PersonType.JUNIOR_STUDENT, mathematics.getTitle());
-        Person senior = new Person("Pope", PersonType.SENIOR_STUDENT, mathematics1.getTitle());
-        Person teacher = new Person("Adam", PersonType.TEACHER, english.getTitle());
-        lib.queueUp(junior);
+        Book mathematics = new Book("Mathematics", 3);
+        Person senior = new Person("Pope", PersonType.SENIOR_STUDENT, mathematics.getTitle());
+        Person teacher = new Person("Adam", PersonType.TEACHER, mathematics.getTitle());
         lib.queueUp(teacher);
         lib.queueUp(senior);
 
@@ -59,17 +55,13 @@ public class ServiceBookLibrary {
 
     @Test
     public void ifFIFOIsConsidered(){
-        Book mathematics = new Book("Mathematics", 1);
-        Book mathematics1 = new Book("Mathematics", 3);
-        Book english = new Book("English", 4);
-        Person junior = new Person("Finger", PersonType.JUNIOR_STUDENT, mathematics.getTitle());
-        Person senior = new Person("Pope", PersonType.SENIOR_STUDENT, mathematics1.getTitle());
-        Person teacher = new Person("Adam", PersonType.TEACHER, english.getTitle());
-        lib.queueUp(junior);
+        Book mathematics = new Book("Mathematics", 3);
+        Person senior = new Person("Pope", PersonType.SENIOR_STUDENT, mathematics.getTitle());
+        Person teacher = new Person("Adam", PersonType.TEACHER, mathematics.getTitle());
         lib.queueUp(teacher);
         lib.queueUp(senior);
 
-        assertEquals("Finger", lib.getPersonQueue().remove().getName());
+        assertEquals("Adam", lib.getPersonQueue().remove().getName());
 
     }
 
