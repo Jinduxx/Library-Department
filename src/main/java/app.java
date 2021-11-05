@@ -3,6 +3,8 @@ import model.Book;
 import service.Library;
 import model.Person;
 
+import java.util.Iterator;
+
 public class app {
 
     public static void main(String[] args) throws Exception {
@@ -24,6 +26,7 @@ public class app {
 
 
         System.out.println("Remaining Books: " +librarian.getLibraryBooks());
+
 
 
         // Object of Person Class
@@ -50,10 +53,7 @@ public class app {
         librarian.queueUp(teacher3);
 
 
-//        Iterator<Person> iter = librarian.getPriorityQueue().iterator();
-//        while(iter.hasNext()){
-//            System.out.println(iter.next().getBooky());
-//        }
+
 
 
 
@@ -67,13 +67,16 @@ public class app {
 //        librarian.borrowBookOnPriority();
 
 
+
+
+
         // Assign Book on FIFO
 
-//        for(int i =0; i< librarian.getCount(); i++){
-//            librarian.borrowBookOnFIFO();
-//        }
-//        librarian.borrowBookOnFIFO();
-//        librarian.borrowBookOnFIFO();
+        for(int i =0; i< librarian.getCount(); i++){
+            librarian.borrowBookOnFIFO();
+        }
+        librarian.borrowBookOnFIFO();
+        librarian.borrowBookOnFIFO();
 
 
 
