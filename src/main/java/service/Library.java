@@ -38,6 +38,14 @@ public class Library implements LibraryService {
         return personQueue;
     }
 
+    public Map<String, Integer> getLibraryBooks() {
+        return libraryBooks;
+    }
+
+    public  int getCount() {
+        return count;
+    }
+
 
     private void addToQueue (Person person){
         if(!personQueue.contains(person)){
@@ -47,10 +55,6 @@ public class Library implements LibraryService {
         if(!priorityQueue.contains(person)){
             priorityQueue.add(person);
         }
-    }
-
-    public Map<String, Integer> getLibraryBooks() {
-        return libraryBooks;
     }
 
 
@@ -109,22 +113,5 @@ public class Library implements LibraryService {
         }
 
     }
-//
-//    @Override
-//    public void borrowBookOnFIFO() {
-//
-//        if(!personQueue.isEmpty()){
-//
-//
-//
-//            System.out.printf("%n %s Borrowed %s %n",bookBorrower.getName(),bookBorrower.getBook());
-//
-//
-//        }
-//
-//    }
 
-    public  int getCount() {
-        return count;
-    }
 }
