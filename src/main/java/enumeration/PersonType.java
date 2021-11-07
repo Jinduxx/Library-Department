@@ -5,7 +5,7 @@ public enum PersonType {
     SENIOR_STUDENT(2),
     JUNIOR_STUDENT(1);
 
-    private int priority;
+    private final int priority;
 
     PersonType(int priority){
         this.priority = priority;

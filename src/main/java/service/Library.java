@@ -1,38 +1,21 @@
 package service;
 
-
-import enumeration.PersonType;
 import model.Book;
 import model.Person;
 
 import java.util.*;
 
-
 public class Library implements LibraryService {
 
     private static int count;
-    private Map<String,Integer> libraryBooks = new HashMap<>();
-    private final static Queue<Person> personQueue = new ArrayDeque<>();
-    private final static Queue<Person> priorityQueue = new PriorityQueue<>(new Comparator<Person>() {
-
-        @Override
-        public int compare(Person one, Person two) {
-            if(one.getPriority() > two.getPriority()){
-                return -1;
-            }else if(one.getPriority() < two.getPriority()){
-                return 1;
-            }else{
-                return 0;
-            }
-        }
-    });
-
-
+    private final Map<String, String> bookRegister = new HashMap<>();
+    private final Map<String,Integer> libraryBooks = new HashMap<>();
+    private static final Queue<Person> personQueue = new ArrayDeque<>();
+    private static final Queue<Person> priorityQueue = new PriorityQueue<>((one, two) -> Integer.compare(two.getPriority(), one.getPriority()));
 
     public Queue<Person> getPriorityQueue() {
         return priorityQueue;
     }
-
 
     public Queue<Person> getPersonQueue() {
         return personQueue;
@@ -42,10 +25,13 @@ public class Library implements LibraryService {
         return libraryBooks;
     }
 
+    public Map<String, String> getBookRegister() {
+        return bookRegister;
+    }
+
     public  int getCount() {
         return count;
     }
-
 
     private void addToQueue (Person person){
         if(!personQueue.contains(person)){
@@ -57,14 +43,12 @@ public class Library implements LibraryService {
         }
     }
 
-
     @Override
-    public void queueUp(Person person) {
+    public void queueUp(final Person person) {
         if(person != null){
             addToQueue(person);
-
+            count++;
         }
-        count++;
     }
 
     @Override
@@ -81,37 +65,41 @@ public class Library implements LibraryService {
     public void borrowBookOnPriority() throws Exception {
         if(!priorityQueue.isEmpty()){
             final  Person bookBorrower = priorityQueue.remove();
-            if((libraryBooks.get(bookBorrower.getBook()) == 0)){
+            if(libraryBooks.get(bookBorrower.getBook()) == 0){
                 System.out.println("Apologies "+ bookBorrower.getPersonType() + " " +  bookBorrower.getName() + ", " + bookBorrower.getBook() + " Book"+ " is already taken");
             }else {
-                int old = libraryBooks.get(bookBorrower.getBook());
-                libraryBooks.put(bookBorrower.getBook(), old -1);
-                System.out.println(bookBorrower.getPersonType() + " " + bookBorrower.getName() +  " You have Successfully borrowed " + bookBorrower.getBook() +" Book");
+                if(bookRegister.containsKey(bookBorrower.getName()) && bookRegister.containsValue(bookBorrower.getBook())){
+                    System.out.println(bookBorrower.getPersonType() + " " + bookBorrower.getName() +" You can't borrow same book twice");
+//                    throw new Exception(bookBorrower.getPersonType() + " " + bookBorrower.getName() +" You can't borrow same book twice");
+                } else{
+                    bookRegister.put(bookBorrower.getName(),bookBorrower.getBook());
+                    libraryBooks.put(bookBorrower.getBook(), libraryBooks.get(bookBorrower.getBook()) -1);
+                    System.out.println(bookBorrower.getPersonType() + " " + bookBorrower.getName() +  " You have Successfully borrowed " + bookBorrower.getBook() +" Book");
+                }
             }
         } else{
             throw new Exception("Nobody is in the Queue. Go and rest :)");
-//            System.out.println();
         }
-
-
     }
 
     @Override
     public void borrowBookOnFIFO() throws Exception {
         if(!personQueue.isEmpty()) {
             final  Person bookBorrower = personQueue.remove();
-            if ((libraryBooks.get(bookBorrower.getBook()) == 0)) {
+            if (libraryBooks.get(bookBorrower.getBook()) == 0) {
                 System.out.println("Apologies "+ bookBorrower.getPersonType() + " " +  bookBorrower.getName() + ", " + bookBorrower.getBook() + " Book"+ " is already taken");
             } else {
-                int old = this.libraryBooks.get(bookBorrower.getBook());
-                libraryBooks.put(bookBorrower.getBook(), old - 1);
-                System.out.println(bookBorrower.getPersonType() + " " +   bookBorrower.getName() + " You have Successfully borrowed " + bookBorrower.getBook() +" Book");
+                if(bookRegister.containsKey(bookBorrower.getName()) && bookRegister.containsValue(bookBorrower.getBook())){
+//                    System.out.println(bookBorrower.getPersonType() + " " + bookBorrower.getName() + " You can't borrow same book twice");
+                    throw new Exception(bookBorrower.getPersonType() + " " + bookBorrower.getName() +" You can't borrow same book twice");
+                } else{
+                    bookRegister.put(bookBorrower.getName(),bookBorrower.getBook());
+                    libraryBooks.put(bookBorrower.getBook(), libraryBooks.get(bookBorrower.getBook()) -1);
+                    System.out.println(bookBorrower.getPersonType() + " " + bookBorrower.getName() +  " You have Successfully borrowed " + bookBorrower.getBook() +" Book");
+                }
             }
         }else {
             throw new Exception("Nobody is in the Queue. Go and rest :)");
-
         }
-
     }
-
 }

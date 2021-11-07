@@ -4,19 +4,16 @@ package model;
 import enumeration.PersonType;
 
 public class Person {
-    private String name;
-    private PersonType personType;
+    private final String name;
+    private final PersonType personType;
     private int priority;
-    private String book;
-
-
+    private final String book;
 
     public Person(String name, PersonType personType, String book) {
         this.name = name != null && name.length() > 2 ? name: "Human";
         this.personType =personType != null ? personType: PersonType.TEACHER;
         this.book = book != null? book : "Choose a book";
         setPriority();
-
     }
 
     public String getBook() {
@@ -43,11 +40,5 @@ public class Person {
         } else{
             this.priority = PersonType.JUNIOR_STUDENT.getPriority();
         }
-
     }
-
-
-
-
-
 }

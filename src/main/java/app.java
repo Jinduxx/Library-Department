@@ -1,9 +1,10 @@
 import enumeration.PersonType;
 import model.Book;
-import service.Library;
 import model.Person;
+import service.Library;
 
-import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.List;
 
 public class app {
 
@@ -23,11 +24,7 @@ public class app {
         librarian.stackBook(chemistry);
         librarian.stackBook(biology);
 
-
-
         System.out.println("Remaining Books: " +librarian.getLibraryBooks());
-
-
 
         // Object of Person Class
 
@@ -40,8 +37,6 @@ public class app {
         Person teacher2 = new Person("Modd", PersonType.TEACHER, biology.getTitle());
         Person teacher3 = new Person("Modd", PersonType.TEACHER, biology.getTitle());
 
-
-
         // Queue them up
         librarian.queueUp(teacher);
         librarian.queueUp(juniorStudent);
@@ -52,12 +47,6 @@ public class app {
         librarian.queueUp(teacher2);
         librarian.queueUp(teacher3);
 
-
-
-
-
-
-
         // Assign Book on priority
 
 //        for(int i =0; i< librarian.getCount(); i++){
@@ -66,19 +55,17 @@ public class app {
 //        librarian.borrowBookOnPriority();
 //        librarian.borrowBookOnPriority();
 
-
-
-
-
         // Assign Book on FIFO
 
-        for(int i =0; i< librarian.getCount(); i++){
+        System.out.println();
+
+        for(int i = 0; i< librarian.getCount(); i++){
             librarian.borrowBookOnFIFO();
         }
 //        librarian.borrowBookOnFIFO();
 //        librarian.borrowBookOnFIFO();
 
-
+        System.out.println();
 
 
 

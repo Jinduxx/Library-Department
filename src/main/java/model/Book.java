@@ -3,9 +3,8 @@ package model;
 import java.util.Objects;
 
 public class Book{
-       private String title;
-       private int noOfCopies;
-
+       private final String title;
+       private final int noOfCopies;
 
        public Book (String title, int noOfCopies){
            this.title = title;
