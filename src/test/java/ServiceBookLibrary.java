@@ -1,6 +1,6 @@
 import enumeration.PersonType;
 import model.Book;
-import service.Library;
+import service.LibraryServiceImplement;
 import model.Person;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,11 +8,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ServiceBookLibrary {
-    Library lib;
+    LibraryServiceImplement lib;
 
     @BeforeEach
     void setUp(){
-       lib = new Library();
+       lib = new LibraryServiceImplement();
     }
 
     @Test

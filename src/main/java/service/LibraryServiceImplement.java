@@ -5,13 +5,16 @@ import model.Person;
 
 import java.util.*;
 
-public class Library implements LibraryService {
+public class LibraryServiceImplement implements LibraryService {
 
     private static int count;
     private final Map<String, String> bookRegister = new HashMap<>();
     private final Map<String,Integer> libraryBooks = new HashMap<>();
     private static final Queue<Person> personQueue = new ArrayDeque<>();
-    private static final Queue<Person> priorityQueue = new PriorityQueue<>((one, two) -> Integer.compare(two.getPriority(), one.getPriority()));
+
+
+    private static final Queue<Person> priorityQueue = new PriorityQueue<>((one, two) ->
+            Integer.compare(two.getPriority(), one.getPriority()));
 
     public Queue<Person> getPriorityQueue() {
         return priorityQueue;
